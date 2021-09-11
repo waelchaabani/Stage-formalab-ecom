@@ -1,0 +1,89 @@
+<app-navbar></app-navbar>
+<div class="bg-gradient-primary public-pages-padding">
+    <div class="container mt-4">
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+
+            <div class="col-xl-10 col-lg-12 col-md-9">
+
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <div class="col-lg-5 d-none d-lg-block bg-register-image">
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                                    </div>
+                                    <form class="user" [formGroup]="registerForm" (ngSubmit)="register()">
+                                        <div class="form-group row">
+                                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                                <input type="text" class="form-control form-control-user" id="exampleFirstName" formControlName="firstname" placeholder="First Name" [ngClass]="{'is-invalid' : firstname?.touched && firstname?.invalid, 'is-valid' : firstname?.touched && !firstname?.invalid}">
+                                                <div *ngIf="firstname?.touched && firstname?.invalid">
+                                                    <small *ngIf="firstname?.errors?.required" class="text-danger">*Firstname is required<br></small>
+                                                    <small *ngIf="firstname?.errors?.pattern" class="text-danger">*Invalid Firstname<br></small>
+                                                    <small *ngIf="firstname?.errors?.minlength" class="text-danger">*Firstname must contain two characters at least</small>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <input type="text" class="form-control form-control-user" id="examplelastname" formControlName="lastname" placeholder="Last Name" [ngClass]="{'is-invalid' : lastname?.touched && lastname?.invalid, 'is-valid' : lastname?.touched && !lastname?.invalid}">
+                                                <div *ngIf="lastname?.touched && lastname?.invalid">
+                                                    <small *ngIf="lastname?.errors?.required" class="text-danger">*lastname is required<br></small>
+                                                    <small *ngIf="lastname?.errors?.pattern" class="text-danger">*Invalid lastname<br></small>
+                                                    <small *ngIf="lastname?.errors?.minlength" class="text-danger">*lastname must contain two characters at least</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="email" class="form-control form-control-user" id="exampleInputEmail" formControlName="email" placeholder="Email Address" [ngClass]="{'is-invalid' : email?.touched && email?.invalid, 'is-valid' : email?.touched && !email?.invalid}">
+                                            <div *ngIf="email?.touched && email?.invalid">
+                                                <small *ngIf="email?.errors?.required" class="text-danger">*Email is required<br></small>
+                                                <small *ngIf="email?.errors?.email" class="text-danger">*Invalid Email<br></small>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                                <input type="password" class="form-control form-control-user" id="exampleInputPassword" formControlName="password" placeholder="Password" [ngClass]="{'is-invalid' : password?.touched && password?.invalid, 'is-valid' : password?.touched && !password?.invalid}">
+                                                <div *ngIf="password?.touched && password?.invalid">
+                                                    <small *ngIf="password?.errors?.required" class="text-danger">*Password is required<br></small>
+                                                    <small *ngIf="password?.errors?.pattern" class="text-danger">
+                                                        *Password must contains atleast : <br>
+                                                        &nbsp;&nbsp;1 majuscule and 1 minuscule letters, 1 number <br>
+                                                        &nbsp;&nbsp;and 1 of these special characters [.#?!@$%^&*-] <br>
+                                                        
+                                                    </small>
+                                                    <small *ngIf="password?.errors?.minlength" class="text-danger">*Password must contain 8 characters at least</small>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" formControlName="repassword" placeholder="Repeat Password" [ngClass]="{'is-invalid' : repassword?.touched && repassword?.invalid && repassword?.value != password?.value, 'is-valid' : repassword?.touched && !repassword?.invalid && repassword?.value == password?.value}">
+                                                <div *ngIf="repassword?.touched && repassword?.invalid">
+                                                    <small *ngIf="repassword?.errors?.required" class="text-danger">*Repeat Password is required<br></small>
+                                                </div>
+                                                <div *ngIf="repassword?.valid && repassword?.value != password?.value" class="text-danger">
+                                                    <small>*The passwords entered do not match</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-primary btn-user btn-block" type="submit" [disabled]="registerForm.invalid || repassword?.value != password?.value">
+                                            Register Account
+                                        </button>
+                                        <hr>
+                                    </form>
+                                    <hr>
+                                    <div class="text-center">
+                                        <a class="small" routerLink="/login">Already have an account? Login!</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
